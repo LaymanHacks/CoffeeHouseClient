@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, Nav, Platform } from 'ionic-angular';
+import {  Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { Page1, Page2 } from '../pages/pages';
+import { Search, Page2} from '../pages/pages';
 import { CoffeeHouseApi } from '../services/services';
 
 
@@ -16,7 +16,7 @@ import { CoffeeHouseApi } from '../services/services';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Page1;
+  rootPage: any = Search;
 
   pages: Array<{title: string, component: any}>;
 
@@ -25,7 +25,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Page One', component: Page1 },
+      { title: 'Search', component: Search },
       { title: 'Page Two', component: Page2 }
     ];
 

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Search Results</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="form-group">
+    <div class="col-md-6" ng-repeat="result in vm.searchResults">
+      <div class="result_row_inner">
+
+      </div>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let result of searchResults">
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="result.icon" [hidden]="!result.icon">
+        </ion-avatar>
+         <h3>{{result.name}}</h3><ion-badge item-right [hidden]="!result.rating">{{result.rating}}</ion-badge>
+        Address: {{result.formatted_address}}
+
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="primary" icon-left (click)="goToMap(result.formatted_address)">
+          <ion-icon name="map"></ion-icon>
+          Map
+          </button>
+        <button ion-button color="secondary" icon-left (click)="goToDirections(result.formatted_address)">
+           <ion-icon name="navigate"></ion-icon>
+          Navigate
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+  </ion-list>
+
+
+</ion-content>

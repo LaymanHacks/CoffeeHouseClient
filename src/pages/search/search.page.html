@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Coffee House Search</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<h5>Search for a Coffee House near you</h5>
+
+
+   <ion-list>
+
+    <ion-item>
+      <ion-label floating>Location</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="searchLocation"></ion-input>
+    </ion-item>
+
+
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button color="primary" block (click)="searchForCoffeeHouses()">Search</button>
+  </div>
+</ion-content>
