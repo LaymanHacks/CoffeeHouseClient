@@ -17,17 +17,17 @@
     </div>
   </div>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let result of searchResults">
-      <ion-item>
+  <ion-list [virtualScroll]="searchResults">
+    <ion-item-sliding *virtualItem="let result">
+      <button ion-item (click)="goToMap(result.formatted_address)">
         <ion-avatar item-left>
           <img [src]="result.icon" [hidden]="!result.icon">
         </ion-avatar>
-         <h3>{{result.name}}</h3><ion-badge item-right [hidden]="!result.rating">{{result.rating}}</ion-badge>
-        Address: {{result.formatted_address}}
+         <h3 style="padding-top: 5px;">{{result.name}}</h3><ion-badge item-right [hidden]="!result.rating">{{result.rating}}</ion-badge>
+         {{result.formatted_address}}
 
-      </ion-item>
-      <ion-item-options>
+      </button>
+      <ion-item-options (ionSwipe)="goToMap(result.formatted_address)">
         <button ion-button color="primary" icon-left (click)="goToMap(result.formatted_address)">
           <ion-icon name="map"></ion-icon>
           Map

@@ -33,7 +33,7 @@ export class MapPage {
   }
 
   getDirections() {
-    window.location = `geo:${this.map.lat},${this.map.lng};u=35`;
+    window.location = `http://maps.google.com/maps?daddr=${this.map.lat},${this.map.lng}`
   }
 
 }

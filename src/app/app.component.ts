@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import {  Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { Search, Page2} from '../pages/pages';
+import { Search} from '../pages/pages';
 import { CoffeeHouseApi } from '../services/services';
 
 
@@ -25,8 +25,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Search', component: Search },
-      { title: 'Page Two', component: Page2 }
+      { title: 'Search', component: Search }
     ];
 
   }

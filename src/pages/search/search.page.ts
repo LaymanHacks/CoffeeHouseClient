@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { LoadingController, NavController } from 'ionic-angular';
 import { CoffeeHouseApi } from '../../services/services';
 import { SearchResults } from '../pages';
 
@@ -11,16 +11,22 @@ import { SearchResults } from '../pages';
 export class Search {
   searchLocation: any;
   searchResults: any;
-  constructor(public navCtrl: NavController, public coffeeHouseApi : CoffeeHouseApi) {  }
+  constructor(
+    public loadingController: LoadingController,
+    public navCtrl: NavController,
+    public coffeeHouseApi : CoffeeHouseApi) {  }
 
  searchForCoffeeHouses(){
+    let loader = this.loadingController.create({
+      content: 'Searching...'
+    });
+loader.present().then(() => {
    this.coffeeHouseApi.search(this.searchLocation).then(data => {
         this.searchResults = data;
-
-        console.log(this.searchResults);
+        loader.dismiss();
         this.navCtrl.push(SearchResults, this.searchResults);
       });
-
-  }
+  });
+ }
 
 }

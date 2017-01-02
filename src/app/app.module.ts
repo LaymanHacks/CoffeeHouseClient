@@ -17,7 +17,7 @@ import { CoffeeHouseApi } from '../services/services';
   imports: [
     IonicModule.forRoot(MyApp),
     HttpModule,
-    AgmCoreModule.forRoot({ apiKey: 'AIzaSyBbsOlMryAHu2ESwHHSwrDBIUU7fiENNoM'})
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyAfKhkb9LCzEvCSCgNpGrT-FL--Oj671XI'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [

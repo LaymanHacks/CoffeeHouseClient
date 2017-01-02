@@ -3,7 +3,7 @@ import {Http} from '@angular/http'
 
 @Injectable()
 export class CoffeeHouseApi {
-  private baseUrl = 'http://localhost:8082/api';
+  private baseUrl = 'http://coffeehouseapi-f74edd4e-1.22554871.cont.dockerapp.io:8080/api';
   constructor(private http:Http) { }
 
     search(address){
