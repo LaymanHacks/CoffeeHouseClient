@@ -3,13 +3,13 @@ import {  Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Search} from '../pages/pages';
-import { CoffeeHouseApi } from '../services/services';
+import {  CoffeeHouseDataService } from '../services/services';
 
 
 @Component({
   templateUrl: 'app.html',
   providers:[
-    CoffeeHouseApi
+    CoffeeHouseDataService
   ]
 
 })
@@ -25,7 +25,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Search', component: Search }
+      { title: 'Coffee Shops', component: Search}
     ];
 
   }

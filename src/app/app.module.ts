@@ -3,31 +3,31 @@ import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MyApp } from './app.component';
-import { Search, Page2, SearchResults, MapPage } from '../pages/pages';
-import { CoffeeHouseApi } from '../services/services';
+import { Search, MapPage } from '../pages/pages';
+import { CoffeeHouseDataService } from '../services/services';
+import *  as AppConfig from './app.config'
+import { RatingStarsComponent } from '../components/ratingstars.component/ratingstars.component'
 
 @NgModule({
   declarations: [
     MyApp,
     Search,
-    Page2,
-    SearchResults,
-    MapPage
+    MapPage,
+    RatingStarsComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
     HttpModule,
-    AgmCoreModule.forRoot({ apiKey: 'AIzaSyAfKhkb9LCzEvCSCgNpGrT-FL--Oj671XI'})
+    AgmCoreModule.forRoot({ apiKey: AppConfig.data.googleMapsJavaScriptKey})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     Search,
-    Page2,
-    SearchResults,
-    MapPage
+    MapPage,
+    RatingStarsComponent
   ],
-  providers: [ CoffeeHouseApi,
+  providers: [ CoffeeHouseDataService,
   {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

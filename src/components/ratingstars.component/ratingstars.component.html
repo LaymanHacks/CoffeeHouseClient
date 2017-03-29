@@ -1,0 +1,6 @@
+<ol class="rating">
+  <li *ngFor="let r of range; let i = index">
+    <ion-icon [name]="value === undefined ? (r === 1 ? 'star' : (r === 2 ? 'star-half' : 'star-outline')) : (value > i ? (value < i+1 ? 'star-half' : 'star') : 'star-outline')">
+    </ion-icon>
+  </li>
+</ol>

@@ -1,29 +1,55 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title> Coffee House Search</ion-title>
-  </ion-navbar>
-  </ion-header>
+  <ion-navbar color="primary">
+<div class="location-search-wrapper">
+    <div class="location-search">
+      <button class="fa fa-bars fa-2" menuToggle></button>
+      <form (ngSubmit)="searchForCoffeeHouses()" style="display: inline-block; width: 100%">
+<input name="searchLocation" placeholder="Search Location" [(ngModel)]="address.place"><button class="map-search-btn" type="submit">
+            <i class="fa fa-search"></i>
+          </button></form>
+          </div>
+<button title="Use Current Location" class="map-marker-btn" (click)="searchForCoffeeHousesCurrentLocation()"><i class="fa fa-map-marker"></i></button>
 
-<ion-content fullscreen>
-<h5>Search for a Coffee House near you</h5>
+</div>
+
+
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
 
 
 
-   <ion-list>
+  <ion-list [virtualScroll]="searchResults">
+    <ion-item-sliding *virtualItem="let result">
 
-    <ion-item>
-      <ion-label floating>Location</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="searchLocation"></ion-input>
-    </ion-item>
+      <button ion-item (click)="goToMap(result.vicinity)">
+        <ion-avatar item-right>
+          <img [src]="result.icon" [hidden]="!result.icon">
+        </ion-avatar>
+        <div class="section-result-text-content">
+         <h3 class="section-result-title">{{result.name}}</h3><span [hidden]="!result.rating"  class="cards-rating-score" >{{result.rating}}</span>
+        <rating-stars [hidden]="!result.rating" [(ngModel)]="result.rating" ngDefaultControl></rating-stars>
+        <div class="section-result-details-container">
+          {{result.vicinity}}
+        </div>
 
+        </div>
+        </button>
+      <ion-item-options (ionSwipe)="goToMap(result.vicinity)">
+        <button ion-button color="primary" icon-left (click)="goToMap(result.vicinity)">
+          <ion-icon name="map"></ion-icon>
+          Map
+          </button>
+        <button ion-button color="secondary" icon-left (click)="goToDirections(result.vicinity)">
+           <ion-icon name="navigate"></ion-icon>
+          Navigate
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
 
 
   </ion-list>
 
-  <div padding>
-    <button ion-button color="primary" block (click)="searchForCoffeeHouses()">Search</button>
-  </div>
+
 </ion-content>
